@@ -2,10 +2,10 @@ let renderRide = function(ride){
   borderColor ='border-gray-900'
   if (ride.length>1) {
     serviceLevel = 'Noober Pool'
-  } else if (ride[0].purpleRequested) {
+  } else if (ride.purpleRequested) {
     serviceLevel = 'Noober Purple'
     borderColor = 'border-purple-500'
-  } else if (ride[0].numberOfPassengers>3) {
+  } else if (ride.numberOfPassengers>3) {
     serviceLevel = 'Noober XL'
   } else {
     serviceLevel = 'Noober X'
