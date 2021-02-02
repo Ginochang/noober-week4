@@ -1,29 +1,25 @@
 let renderRide = function(ride){
   borderColor ='border-gray-900'
-  if(ride.length>1){
-    levelOfService = 'Noober Pool'
-  }else{
-    if(ride[0].purpleRequested){
-      levelOfService = 'Noober Purple'
-      borderColor = 'border-purple-500'
-    }else{
-      if(ride[0].numberOfPassengers>3){
-        levelOfService = 'Noober XL'
-      }else{
-        levelOfService = 'Noober X'
-      }
-    }
+  if (ride.length>1) {
+    serviceLevel = 'Noober Pool'
+  } else if (ride[0].purpleRequested) {
+    serviceLevel = 'Noober Purple'
+    borderColor = 'border-purple-500'
+  } else if (ride[0].numberOfPassengers>3) {
+    serviceLevel = 'Noober XL'
+  } else {
+    serviceLevel = 'Noober X'
   }
-
+  
   let outputElement = document.querySelector('.rides')
   outputElement.insertAdjacentHTML('beforeend', ` 
     <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
     <i class="fas fa-car-side"></i>
-    <span>${levelOfService}</span>
+    <span>${serviceLevel}</span>
     </h1>
   `)
 
-  for (let i = 0; i < ride.length; i++) { 
+  for (let i = 0; i<ride.length; i++) { 
     outputElement.insertAdjacentHTML('beforeend', ` 
     <div class="border-4 ${borderColor} p-4 my-4 text-left">
       <div class="flex">
@@ -63,9 +59,9 @@ async function pageLoaded() {
   console.dir(json)
   
   // 🔥 start here: write code to loop through the rides
-   document.querySelector('.rides').innerHTML = "";
+   
 
-  for (let i = 0; i < json.length; i++) { 
+  for (let i = 0; i<json.length; i++) { 
     renderRide(json[i])
   }
 }
